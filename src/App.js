@@ -23,6 +23,7 @@ const App = () => {
   const [saveCount, setSaveCount] = useState(() => {
     return savedItems.length;
   });
+  const [hasBeenSaved, setHasBeenSaved] = useState(false);
 
   const navigator = useNavigate();
 
@@ -60,12 +61,24 @@ const App = () => {
     setSearchQuery("");
   };
 
+  const checkLocalData = (data) => {
+    const localData = JSON.parse(localStorage.getItem("recipes"));
+    const dataExistance = localData.some((local) => local.id === data.id);
+
+    if (!dataExistance) {
+      setSavedItems((prevState) => [...prevState, data]);
+    } else {
+      const filteredLocalData = localData.filter(
+        (local) => local.id !== data.id
+      );
+      setSavedItems(filteredLocalData);
+    }
+  };
+
   const saveHandler = (id) => {
     fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       .then((res) => res.json())
-      .then((data) =>
-        setSavedItems((prevState) => [...prevState, data.data.recipe])
-      );
+      .then((data) => checkLocalData(data.data.recipe));
   };
 
   useEffect(() => {
@@ -99,13 +112,21 @@ const App = () => {
         <Route
           path="recipe-item/:id"
           element={
-            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+            <RecipeItem
+              saveHandler={saveHandler}
+              savedItems={savedItems}
+              hasBeenSaved={hasBeenSaved}
+            />
           }
         />
         <Route
           path="favourites/recipe-item/:id"
           element={
-            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+            <RecipeItem
+              saveHandler={saveHandler}
+              savedItems={savedItems}
+              hasBeenSaved={hasBeenSaved}
+            />
           }
         />
         <Route

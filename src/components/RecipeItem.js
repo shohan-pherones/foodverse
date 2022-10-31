@@ -5,11 +5,10 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TiTick } from "react-icons/ti";
 import { CgSpinner } from "react-icons/cg";
 
-const RecipeItem = ({ saveHandler, savedItems }) => {
+const RecipeItem = ({ saveHandler, hasBeenSaved }) => {
   const [recipe, setRecipe] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [hasBeenSaved, setHasBeenSaved] = useState(false);
 
   const { id } = useParams();
 
@@ -45,12 +44,6 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
       return String(time).replace(".", "h") + "min";
     }
   };
-
-  useEffect(() => {
-    if (!recipe.id) return;
-    const saveStatus = savedItems.some((item) => item.id === recipe.id);
-    setHasBeenSaved(saveStatus);
-  }, [recipe]);
 
   return (
     <>

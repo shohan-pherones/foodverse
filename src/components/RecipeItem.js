@@ -5,10 +5,11 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TiTick } from "react-icons/ti";
 import { CgSpinner } from "react-icons/cg";
 
-const RecipeItem = ({ saveHandler }) => {
+const RecipeItem = ({ saveHandler, savedItems }) => {
   const [recipe, setRecipe] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasBeenSaved, setHasBeenSaved] = useState(false);
 
   const { id } = useParams();
 
@@ -45,6 +46,12 @@ const RecipeItem = ({ saveHandler }) => {
     }
   };
 
+  useEffect(() => {
+    if (!recipe.id) return;
+    const saveStatus = savedItems.some((item) => item.id === recipe.id);
+    setHasBeenSaved(saveStatus);
+  }, [recipe]);
+
   return (
     <>
       {isLoading && (
@@ -72,10 +79,14 @@ const RecipeItem = ({ saveHandler }) => {
                 {recipe.publisher}
               </p>
               <button
-                className="uppercase tracking-wider font-bold text-purple-400"
+                className={`uppercase tracking-wider font-bold ${
+                  hasBeenSaved ? "text-rose-400" : "text-purple-400"
+                }`}
                 onClick={() => saveHandler(recipe.id)}
               >
-                + Save as favourite
+                {hasBeenSaved
+                  ? "- Remove from favourites"
+                  : "+ Save as favourite"}
               </button>
             </div>
             <h2 className="text-4xl font-semibold">{recipe.title}</h2>

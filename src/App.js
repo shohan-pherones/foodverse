@@ -98,11 +98,15 @@ const App = () => {
         />
         <Route
           path="recipe-item/:id"
-          element={<RecipeItem saveHandler={saveHandler} />}
+          element={
+            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+          }
         />
         <Route
           path="favourites/recipe-item/:id"
-          element={<RecipeItem saveHandler={saveHandler} />}
+          element={
+            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+          }
         />
         <Route
           path="favourites"

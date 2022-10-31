@@ -101,6 +101,10 @@ const App = () => {
           element={<RecipeItem saveHandler={saveHandler} />}
         />
         <Route
+          path="favourites/recipe-item/:id"
+          element={<RecipeItem saveHandler={saveHandler} />}
+        />
+        <Route
           path="favourites"
           element={<Favourites savedItems={savedItems} />}
         />

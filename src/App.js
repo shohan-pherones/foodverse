@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Favourites from "./components/Favourites";
 import RecipeItem from "./components/RecipeItem";
-import Footer from "./components/Footer";
+import Favourites from "./components/Favourites";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -13,13 +13,18 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [emptyArray, setEmptyArray] = useState("");
-
-  const inputField = useRef();
+  const [stable, setStable] = useState(
+    "Nothing to show, please search something!"
+  );
 
   const navigator = useNavigate();
 
+  const inputField = useRef();
+
   const searchHandler = (e) => {
     e.preventDefault();
+
+    inputField.current.blur();
 
     navigator("/");
 
@@ -27,8 +32,7 @@ const App = () => {
     setRecipes([]);
     setErrorMsg("");
     setEmptyArray("");
-
-    inputField.current.blur();
+    setStable("");
 
     setTimeout(() => {
       fetch(
@@ -44,7 +48,7 @@ const App = () => {
           setIsLoading(false);
         })
         .catch((err) => setErrorMsg(err.message));
-    }, 1000);
+    }, 500);
 
     setSearchQuery("");
   };
@@ -67,11 +71,12 @@ const App = () => {
               errorMsg={errorMsg}
               searchQuery={searchQuery}
               emptyArray={emptyArray}
+              stable={stable}
             />
           }
         />
-        <Route path="/favourites" element={<Favourites />} />
-        <Route path="/recipe-item/:id" element={<RecipeItem />} />
+        <Route path="recipe-item/:id" element={<RecipeItem />} />
+        <Route path="favourites" element={<Favourites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

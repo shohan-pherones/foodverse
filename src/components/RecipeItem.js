@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsPerson, BsClock } from "react-icons/bs";
 import { GiKnifeFork } from "react-icons/gi";
@@ -6,12 +6,13 @@ import { TiTick } from "react-icons/ti";
 import { CgSpinner } from "react-icons/cg";
 
 const RecipeItem = () => {
-  const { id } = useParams();
-  const navigator = useNavigate();
-
   const [recipe, setRecipe] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const { id } = useParams();
+
+  const navigator = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,7 +30,7 @@ const RecipeItem = () => {
           setIsLoading(false);
         })
         .catch((err) => setErrorMsg(err.message));
-    }, 1000);
+    }, 500);
   }, []);
 
   const timeFormatter = (time) => {

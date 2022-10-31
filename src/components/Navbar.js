@@ -17,7 +17,7 @@ const Navbar = ({ searchQuery, setSearchQuery, searchHandler, inputField }) => {
           ref={inputField}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          type="text"
+          type="search"
           required
           placeholder="Search your meal..."
           className="p-5 text-center rounded-full outline-none border-2 focus:border-orange-500 duration-500"
@@ -36,7 +36,7 @@ const Navbar = ({ searchQuery, setSearchQuery, searchHandler, inputField }) => {
         </li>
         <li>
           <NavLink
-            to="/favourites"
+            to="favourites"
             className="text-gray-400 hover:text-gray-600 duration-500"
             style={navActive}
           >

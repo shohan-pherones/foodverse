@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -16,6 +16,13 @@ const App = () => {
   const [stable, setStable] = useState(
     "Nothing to show, please search something!"
   );
+  const [savedItems, setSavedItems] = useState(() => {
+    const localData = localStorage.getItem("recipes");
+    return localData ? JSON.parse(localData) : [];
+  });
+  const [saveCount, setSaveCount] = useState(() => {
+    return savedItems.length;
+  });
 
   const navigator = useNavigate();
 
@@ -53,6 +60,19 @@ const App = () => {
     setSearchQuery("");
   };
 
+  const saveHandler = (id) => {
+    fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
+      .then((res) => res.json())
+      .then((data) =>
+        setSavedItems((prevState) => [...prevState, data.data.recipe])
+      );
+  };
+
+  useEffect(() => {
+    localStorage.setItem("recipes", JSON.stringify(savedItems));
+    setSaveCount(savedItems.length);
+  }, [savedItems]);
+
   return (
     <div className="text-gray-600 text-xl font-normal bg-gray-100 min-h-screen w-full">
       <Navbar
@@ -60,6 +80,7 @@ const App = () => {
         setSearchQuery={setSearchQuery}
         searchHandler={searchHandler}
         inputField={inputField}
+        saveCount={saveCount}
       />
       <Routes>
         <Route
@@ -75,8 +96,14 @@ const App = () => {
             />
           }
         />
-        <Route path="recipe-item/:id" element={<RecipeItem />} />
-        <Route path="favourites" element={<Favourites />} />
+        <Route
+          path="recipe-item/:id"
+          element={<RecipeItem saveHandler={saveHandler} />}
+        />
+        <Route
+          path="favourites"
+          element={<Favourites savedItems={savedItems} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

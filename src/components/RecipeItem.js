@@ -5,7 +5,7 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TiTick } from "react-icons/ti";
 import { CgSpinner } from "react-icons/cg";
 
-const RecipeItem = () => {
+const RecipeItem = ({ saveHandler }) => {
   const [recipe, setRecipe] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -67,9 +67,17 @@ const RecipeItem = () => {
             />
           </div>
           <div className="flex flex-col gap-3">
-            <p className="uppercase tracking-wider font-bold text-cyan-400">
-              {recipe.publisher}
-            </p>
+            <div className="flex justify-between">
+              <p className="uppercase tracking-wider font-bold text-cyan-400">
+                {recipe.publisher}
+              </p>
+              <button
+                className="uppercase tracking-wider font-bold text-purple-400"
+                onClick={() => saveHandler(recipe.id)}
+              >
+                + Save as favourite
+              </button>
+            </div>
             <h2 className="text-4xl font-semibold">{recipe.title}</h2>
             <div className="flex flex-wrap gap-3 justify-between uppercase font-bold tracking-wider">
               <p className="flex items-center gap-2">

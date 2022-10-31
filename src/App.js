@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Favourites from "./components/Favourites";
 import RecipeItem from "./components/RecipeItem";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -71,6 +72,7 @@ const App = () => {
         />
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/recipe-item/:id" element={<RecipeItem />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

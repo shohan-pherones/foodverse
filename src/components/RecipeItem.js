@@ -64,8 +64,8 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
       )}
 
       {recipe && (
-        <div className="min-h-screen container mx-auto py-14 flex gap-10 flex-col lg:flex-row">
-          <div className="w-150 h-130 flex justify-center items-center overflow-hidden rounded-xl">
+        <div className="min-h-screen container mx-auto py-14 flex gap-10 flex-col lg:flex-row px-5 md:px-0">
+          <div className="w-full h-96 lg:w-150 lg:h-130 flex justify-center items-start overflow-hidden rounded-xl">
             <img
               src={recipe.image_url}
               alt={recipe.title}

@@ -14,7 +14,7 @@ const Navbar = ({
   };
 
   return (
-    <nav className="flex justify-between items-center container mx-auto py-8 border-b-2">
+    <nav className="flex flex-col gap-5 md:flex-row justify-between items-center container mx-auto py-8 border-b-2">
       <h2 className="text-3xl font-extrabold lowercase italic">
         Food<span className="text-orange-500">verse</span>
       </h2>

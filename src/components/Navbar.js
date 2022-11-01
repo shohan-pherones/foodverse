@@ -9,14 +9,14 @@ const Navbar = ({
 }) => {
   const navActive = ({ isActive }) => {
     return {
-      color: isActive ? "#f97316" : null,
+      color: isActive ? "#f43f5e" : null,
     };
   };
 
   return (
-    <nav className="flex flex-col gap-5 md:flex-row justify-between items-center container mx-auto py-8 border-b-2">
-      <h2 className="text-3xl font-extrabold lowercase italic">
-        Food<span className="text-orange-500">verse</span>
+    <nav className="flex justify-between items-center container mx-auto py-8">
+      <h2 className="text-2xl font-bold lowercase italic">
+        Food<span className="text-rose-500">verse</span>
       </h2>
       <form onSubmit={searchHandler}>
         <input
@@ -25,16 +25,16 @@ const Navbar = ({
           onChange={(e) => setSearchQuery(e.target.value)}
           type="search"
           required
-          placeholder="Search your meal..."
-          className="p-5 text-center rounded-full outline-none border-2 focus:border-orange-500 duration-500"
+          placeholder="Search any recipe"
+          className="bg-white p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-xl focus:shadow-rose-100 duration-300"
         />
       </form>
-      <ul className="flex capitalize gap-5">
+      <ul className="flex gap-5">
         <li>
           <NavLink
             end
             to="/"
-            className="text-gray-400 hover:text-gray-600 duration-500"
+            className="text-gray-400 hover:text-gray-700 duration-300"
             style={navActive}
           >
             Home
@@ -43,13 +43,11 @@ const Navbar = ({
         <li>
           <NavLink
             to="favourites"
-            className="text-gray-400 hover:text-gray-600 duration-500"
+            className="text-gray-400 hover:text-gray-700 duration-300"
             style={navActive}
           >
             Favourites{" "}
-            <span className="text-lg font-bold text-purple-400">
-              ({saveCount})
-            </span>
+            <span className="font-bold text-sky-500">({saveCount})</span>
           </NavLink>
         </li>
       </ul>

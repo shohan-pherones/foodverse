@@ -88,7 +88,7 @@ const App = () => {
   }, [savedItems]);
 
   return (
-    <div className="text-gray-600 text-xl font-normal bg-gray-100 min-h-screen w-full">
+    <div className="bg-rose-50 text-gray-700 text-lg min-h-screen">
       <Navbar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

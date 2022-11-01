@@ -3,21 +3,21 @@ import { CgSpinner } from "react-icons/cg";
 
 const Home = ({ recipes, isLoading, errorMsg, emptyArray, stable }) => {
   return (
-    <div className="container mx-auto py-14 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center min-h-screen items-start">
+    <div className="container mx-auto py-8 min-h-screen flex flex-wrap gap-10 justify-center items-start">
       {!isLoading && !errorMsg && !emptyArray && recipes.length === 0 ? (
-        <p className="col-span-full text-4xl font-medium text-gray-400 text-center">
+        <p className="col-span-full text-4xl text-center font-semibold text-rose-300 leading-normal">
           {stable}
         </p>
       ) : null}
 
       {isLoading && (
-        <p className="col-span-full text-3xl">
+        <p className="col-span-full text-2xl">
           {errorMsg ? errorMsg : <CgSpinner className="animate-spin" />}
         </p>
       )}
 
       {recipes.length === 0 && (
-        <p className="col-span-full text-3xl">{emptyArray}</p>
+        <p className="col-span-full text-2xl">{emptyArray}</p>
       )}
 
       {recipes.length > 0 &&

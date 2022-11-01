@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <div className="container mx-auto py-8 flex flex-col items-center gap-5">
       <p className="col-span-full text-4xl text-center font-semibold text-rose-300 leading-normal">
-        Sorry, page not found!
+        Sorry, that page not found!
       </p>
       <Link
         to="/"

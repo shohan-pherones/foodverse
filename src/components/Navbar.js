@@ -26,7 +26,7 @@ const Navbar = ({
           type="search"
           required
           placeholder="Search any recipe"
-          className="bg-white p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-rose-200 duration-300"
+          className="bg-white/75 p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-rose-200 duration-300"
         />
       </form>
       <ul className="flex gap-5">
@@ -34,7 +34,7 @@ const Navbar = ({
           <NavLink
             end
             to="/"
-            className="text-gray-400 hover:text-gray-700 duration-300"
+            className="text-gray-400 hover:text-gray-600 duration-300"
             style={navActive}
           >
             Home
@@ -43,7 +43,7 @@ const Navbar = ({
         <li>
           <NavLink
             to="favourites"
-            className="text-gray-400 hover:text-gray-700 duration-300"
+            className="text-gray-400 hover:text-gray-600 duration-300"
             style={navActive}
           >
             Favourites{" "}

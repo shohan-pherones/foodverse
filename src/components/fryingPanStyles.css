@@ -143,24 +143,19 @@
   0% {
     transform: rotate(0deg);
   }
-
   5% {
     transform: rotate(-27deg);
   }
-
   30%,
   50% {
     transform: rotate(0deg);
   }
-
   55% {
     transform: rotate(27deg);
   }
-
   83.3% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(0deg);
   }
@@ -170,7 +165,6 @@
   0% {
     transform: rotateY(0deg);
   }
-
   50% {
     transform: rotateY(180deg);
   }

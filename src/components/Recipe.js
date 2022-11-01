@@ -5,7 +5,7 @@ const Recipe = ({ recipe }) => {
   return (
     <div
       key={recipe.id}
-      className="w-80 overflow-hidden rounded-2xl bg-white/75 backdrop-blur-lg shadow-xl shadow-rose-100 border border-white p-5"
+      className="w-80 overflow-hidden rounded-2xl bg-white/75 shadow-xl shadow-rose-100 border-2 border-white p-5"
     >
       <div className="overflow-hidden rounded-xl h-40 flex justify-center items-center">
         <img

@@ -3,12 +3,12 @@ import Recipe from "./Recipe";
 const Favourites = ({ savedItems }) => {
   return (
     <>
-      <p className="col-span-full text-4xl font-medium text-gray-400 text-center pt-14">
+      <p className="col-span-full text-4xl text-center font-semibold text-rose-300 leading-normal py-8">
         {savedItems.length === 0
           ? "Favourite list is empty!"
           : "Your favourite recipes!"}
       </p>
-      <div className="container mx-auto py-14 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center min-h-screen items-start">
+      <div className="container mx-auto py-8 min-h-screen flex flex-wrap gap-10 justify-center items-start">
         {savedItems.map((recipe) => (
           <Recipe key={recipe.id} recipe={recipe} />
         ))}

@@ -54,7 +54,7 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
   return (
     <>
       {isLoading && (
-        <p className="col-span-full text-3xl container mx-auto py-14 text-center min-h-screen">
+        <p className="col-span-full text-3xl container mx-auto py-14 text-center">
           {errorMsg ? (
             errorMsg
           ) : (
@@ -64,7 +64,7 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
       )}
 
       {recipe && (
-        <div className="min-h-screen container mx-auto py-14 flex gap-10 flex-col lg:flex-row px-5 md:px-0">
+        <div className="container mx-auto py-14 flex gap-10 flex-col lg:flex-row px-5 md:px-0">
           <div className="w-full h-96 lg:w-150 lg:h-130 flex justify-center items-start overflow-hidden rounded-xl">
             <img
               src={recipe.image_url}

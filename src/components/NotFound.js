@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
+import FryingPan from "./FryingPan";
 
 const NotFound = () => {
   return (
-    <div className="container mx-auto py-8 min-h-screen flex flex-col items-center gap-5">
+    <div className="container mx-auto py-8 flex flex-col items-center gap-5">
       <p className="col-span-full text-4xl text-center font-semibold text-rose-300 leading-normal">
         Sorry, page not found!
       </p>
@@ -13,6 +14,7 @@ const NotFound = () => {
       >
         Go home <BsArrowRightShort className="text-lg" />
       </Link>
+      <FryingPan />
     </div>
   );
 };

@@ -26,7 +26,7 @@ const Navbar = ({
           type="search"
           required
           placeholder="Search any recipe"
-          className="bg-white p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-xl focus:shadow-rose-100 duration-300"
+          className="bg-white p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-rose-200 duration-300"
         />
       </form>
       <ul className="flex gap-5">

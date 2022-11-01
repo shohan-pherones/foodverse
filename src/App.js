@@ -88,48 +88,50 @@ const App = () => {
   }, [savedItems]);
 
   return (
-    <div className="bg-rose-50 text-gray-700 text-lg min-h-screen">
-      <Navbar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        searchHandler={searchHandler}
-        inputField={inputField}
-        saveCount={saveCount}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              recipes={recipes}
-              isLoading={isLoading}
-              errorMsg={errorMsg}
-              searchQuery={searchQuery}
-              emptyArray={emptyArray}
-              stable={stable}
-            />
-          }
+    <>
+      <div className="bg-rose-50 text-gray-600 text-lg min-h-screen">
+        <Navbar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchHandler={searchHandler}
+          inputField={inputField}
+          saveCount={saveCount}
         />
-        <Route
-          path="recipe-item/:id"
-          element={
-            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
-          }
-        />
-        <Route
-          path="favourites/recipe-item/:id"
-          element={
-            <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
-          }
-        />
-        <Route
-          path="favourites"
-          element={<Favourites savedItems={savedItems} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                recipes={recipes}
+                isLoading={isLoading}
+                errorMsg={errorMsg}
+                searchQuery={searchQuery}
+                emptyArray={emptyArray}
+                stable={stable}
+              />
+            }
+          />
+          <Route
+            path="recipe-item/:id"
+            element={
+              <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+            }
+          />
+          <Route
+            path="favourites/recipe-item/:id"
+            element={
+              <RecipeItem saveHandler={saveHandler} savedItems={savedItems} />
+            }
+          />
+          <Route
+            path="favourites"
+            element={<Favourites savedItems={savedItems} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

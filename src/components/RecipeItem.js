@@ -134,20 +134,17 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
             <div className="mt-5">
               {recipe.ingredients &&
                 recipe.ingredients.map((ing) => (
-                  <div
+                  <p
+                    className="leading-loose"
                     key={Math.floor(Math.random() * 100000000)}
-                    className="flex gap-2 items-baseline"
                   >
-                    <TiTick />
-                    <p className="leading-loose">
-                      {" "}
-                      <span>
-                        {ing.quantity && ing.quantity}
-                        {ing.unit && ing.unit}{" "}
-                        {ing.description && ing.description}
-                      </span>{" "}
-                    </p>
-                  </div>
+                    <TiTick className="inline-block" />
+                    <span>
+                      {ing.quantity && ing.quantity}
+                      {ing.unit && ing.unit}{" "}
+                      {ing.description && ing.description}
+                    </span>{" "}
+                  </p>
                 ))}
             </div>
           </div>

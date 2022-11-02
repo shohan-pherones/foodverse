@@ -4,7 +4,7 @@ import FryingPan from "./FryingPan";
 const NotFound = () => {
   return (
     <div className="container mx-auto py-8 flex flex-col items-center gap-5">
-      <p className="text-4xl text-center font-semibold text-rose-300 leading-normal">
+      <p className="text-2xl lg:text-4xl text-center font-semibold text-rose-300 leading-normal">
         Page not found!
       </p>
       <Link

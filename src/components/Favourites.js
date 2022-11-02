@@ -3,7 +3,7 @@ import Recipe from "./Recipe";
 const Favourites = ({ savedItems }) => {
   return (
     <>
-      <div className="text-4xl text-center font-semibold text-rose-300 leading-normal py-8">
+      <div className="text-2xl lg:text-4xl text-center font-semibold text-rose-300 leading-normal py-8">
         {savedItems.length === 0 ? (
           <p>Your favourite list is empty!</p>
         ) : (

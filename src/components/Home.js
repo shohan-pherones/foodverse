@@ -6,7 +6,7 @@ const Home = ({ recipes, isLoading, errorMsg, emptyArray, stable }) => {
   return (
     <div className="container mx-auto py-8 flex flex-wrap gap-10 justify-center">
       {!isLoading && !errorMsg && !emptyArray && recipes.length === 0 ? (
-        <div className="text-4xl text-center font-semibold text-rose-300 leading-normal">
+        <div className="text-2xl lg:text-4xl text-center font-semibold text-rose-300 leading-normal">
           <p>{stable}</p>
           <FryingPan />
         </div>

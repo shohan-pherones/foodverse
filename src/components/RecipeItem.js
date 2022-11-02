@@ -64,9 +64,9 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
       )}
 
       {recipe && (
-        <div className="container mx-auto py-8 grid grid-cols-2 gap-8">
+        <div className="container mx-auto py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 px-5 lg:px-0">
           <div className="flex flex-col gap-5">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col-reverse lg:flex-row items-start lg:items-center gap-5 lg:justify-between">
               <p className="uppercase font-semibold tracking-wider text-violet-500">
                 {recipe.publisher}
               </p>
@@ -83,8 +83,8 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
                   : "+ Save as favourite"}
               </button>
             </div>
-            <h2 className="text-6xl capitalize">{recipe.title}</h2>
-            <div className="flex justify-between">
+            <h2 className="text-4xl lg:text-6xl capitalize">{recipe.title}</h2>
+            <div className="flex justify-between flex-col lg:flex-row gap-3">
               <p className="uppercase font-semibold tracking-wider text-orange-500 flex items-center gap-2">
                 <BsPerson /> Servings <span>(People):</span>{" "}
                 <span>{recipe.servings}</span>
@@ -93,14 +93,14 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
                 {" "}
                 <BsClock />
                 Cooking Time:{" "}
-                <span className="lowercase">
+                <span>
                   {recipe.cooking_time < 60
                     ? String(recipe.cooking_time) + "min"
                     : timeFormatter(recipe.cooking_time / 60)}
                 </span>
               </p>
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-5 flex-col-reverse  items-start lg:flex-row">
               <button
                 onClick={() => navigator(-1)}
                 className="bg-rose-500 text-rose-50 p-3 px-8 rounded-full uppercase shadow-lg shadow-rose-200 hover:bg-gray-600 hover:text-gray-50 hover:shadow-gray-300 duration-300"
@@ -116,7 +116,7 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
               </a>
             </div>
           </div>
-          <div className="bg-blue-500 overflow-hidden flex justify-center items-center h-96 rounded-xl">
+          <div className="overflow-hidden flex justify-center items-center lg:h-96 rounded-xl">
             <img
               src={recipe.image_url}
               alt={recipe.title}
@@ -124,7 +124,7 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
             />
           </div>
           <div className="col-span-full">
-            <h2 className="text-4xl flex items-center gap-3 font-medium mb-5">
+            <h2 className="text-2xl lg:text-4xl flex items-center gap-3 font-medium mb-5">
               <span className="text-rose-500">
                 <GiKnifeFork />
               </span>{" "}

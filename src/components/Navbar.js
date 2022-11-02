@@ -25,8 +25,8 @@ const Navbar = ({
           onChange={(e) => setSearchQuery(e.target.value)}
           type="search"
           required
-          placeholder="Search any recipe"
-          className="bg-white/75 p-3 text-center rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-rose-200 duration-300"
+          placeholder="Search recipe..."
+          className="bg-white/75 p-3 px-8 w-96 rounded-full outline-none shadow-lg shadow-rose-100 focus:shadow-rose-200 duration-300"
         />
       </form>
       <ul className="flex gap-5">
@@ -47,7 +47,7 @@ const Navbar = ({
             style={navActive}
           >
             Favourites{" "}
-            <span className="font-bold text-sky-500">({saveCount})</span>
+            <span className="font-bold text-sky-400">({saveCount})</span>
           </NavLink>
         </li>
       </ul>

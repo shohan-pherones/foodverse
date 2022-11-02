@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BsArrowRightShort } from "react-icons/bs";
 
 const Recipe = ({ recipe }) => {
   return (
@@ -15,7 +14,7 @@ const Recipe = ({ recipe }) => {
         />
       </div>
       <div className="pt-5 flex flex-col">
-        <p className="text-xs uppercase text-rose-500 font-bold tracking-wider">
+        <p className="text-xs uppercase text-sky-400 font-semibold tracking-widest">
           {recipe.publisher}
         </p>
         <h2 className="text-2xl capitalize truncate font-medium">
@@ -23,9 +22,9 @@ const Recipe = ({ recipe }) => {
         </h2>
         <Link
           to={`recipe-item/${recipe.id}`}
-          className="flex items-center gap-2 text-sm capitalize bg-rose-500 text-rose-100 self-start p-2 px-5 rounded-md shadow-lg shadow-rose-200 mt-2 hover:bg-sky-500 hover:text-sky-100 hover:shadow-sky-200 duration-300"
+          className="bg-gradient-to-br from-rose-400 to-rose-600 self-start text-rose-50 text-sm uppercase font-medium tracking-wider p-3 px-8 rounded-lg mt-2 shadow-md shadow-rose-200 hover:shadow-lg hover:shadow-rose-300 duration-300"
         >
-          View recipe <BsArrowRightShort className="text-lg" />
+          View recipe
         </Link>
       </div>
     </div>

@@ -54,7 +54,7 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
   return (
     <>
       {isLoading && (
-        <p className="col-span-full text-3xl container mx-auto py-14 text-center">
+        <p className="text-2xl container mx-auto py-8 text-center">
           {errorMsg ? (
             errorMsg
           ) : (
@@ -64,22 +64,17 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
       )}
 
       {recipe && (
-        <div className="container mx-auto py-14 flex gap-10 flex-col lg:flex-row px-5 md:px-0">
-          <div className="w-full h-96 lg:w-150 lg:h-130 flex justify-center items-start overflow-hidden rounded-xl">
-            <img
-              src={recipe.image_url}
-              alt={recipe.title}
-              className="w-full block"
-            />
-          </div>
-          <div className="flex flex-col gap-3">
-            <div className="flex justify-between">
-              <p className="uppercase tracking-wider font-bold text-cyan-400">
+        <div className="container mx-auto py-8 grid grid-cols-2 gap-8">
+          <div className="flex flex-col gap-5">
+            <div className="flex items-center justify-between">
+              <p className="uppercase font-semibold tracking-wider text-violet-500">
                 {recipe.publisher}
               </p>
               <button
-                className={`uppercase tracking-wider font-bold  ${
-                  hasBeenSaved ? "text-rose-400" : "text-purple-400"
+                className={`p-3  px-8 rounded-full uppercase tracking-wider font-semibold duration-300 ${
+                  hasBeenSaved
+                    ? "text-rose-500 bg-rose-200 hover:bg-rose-500 hover:text-rose-50"
+                    : "text-sky-500 bg-sky-200 hover:bg-sky-500 hover:text-sky-50"
                 }`}
                 onClick={() => saveHandler(recipe.id)}
               >
@@ -88,60 +83,72 @@ const RecipeItem = ({ saveHandler, savedItems }) => {
                   : "+ Save as favourite"}
               </button>
             </div>
-            <h2 className="text-4xl font-semibold">{recipe.title}</h2>
-            <div className="flex flex-wrap gap-3 justify-between uppercase font-bold tracking-wider">
-              <p className="flex items-center gap-2">
-                <BsPerson className="inline-block text-cyan-500" /> Servings{" "}
-                <span className="capitalize">(People):</span>{" "}
-                <span className="text-orange-500">{recipe.servings}</span>
+            <h2 className="text-6xl capitalize">{recipe.title}</h2>
+            <div className="flex justify-between">
+              <p className="uppercase font-semibold tracking-wider text-orange-500 flex items-center gap-2">
+                <BsPerson /> Servings <span>(People):</span>{" "}
+                <span>{recipe.servings}</span>
               </p>
-              <p className="flex items-center gap-2">
+              <p className="uppercase font-semibold tracking-wider text-orange-500 flex items-center gap-2">
                 {" "}
-                <BsClock className="inline-block text-cyan-500" />
+                <BsClock />
                 Cooking Time:{" "}
-                <span className="text-orange-500 lowercase font-bold">
+                <span className="lowercase">
                   {recipe.cooking_time < 60
                     ? String(recipe.cooking_time) + "min"
                     : timeFormatter(recipe.cooking_time / 60)}
                 </span>
               </p>
             </div>
-            <div className="flex flex-col gap-3">
-              <h2 className="border-t-2 mt-3 pt-5 text-2xl font-bold flex items-center gap-2">
-                <span>
-                  <GiKnifeFork className="text-cyan-500" />
-                </span>{" "}
-                Ingredients:
-              </h2>
-              <div className="leading-relaxed">
-                {recipe.ingredients &&
-                  recipe.ingredients.map((ing) => (
-                    <p key={Math.floor(Math.random() * 100000000)}>
-                      {" "}
-                      <TiTick className="inline-block" />
-                      <span className="text-orange-500">
-                        {ing.quantity && ing.quantity}
-                        {ing.unit && ing.unit}
-                      </span>{" "}
-                      {ing.description && ing.description}
-                    </p>
-                  ))}
-              </div>
-            </div>
-            <div className="flex gap-10">
+            <div className="flex gap-5">
               <button
                 onClick={() => navigator(-1)}
-                className="self-start bg-orange-500 py-2 px-5 mt-3 text-orange-100 rounded shadow-lg shadow-orange-200 hover:bg-cyan-500 hover:text-cyan-100 hover:shadow-cyan-200 duration-500"
+                className="bg-rose-500 text-rose-50 p-3 px-8 rounded-full uppercase shadow-lg shadow-rose-200 hover:bg-gray-600 hover:text-gray-50 hover:shadow-gray-300 duration-300"
               >
                 Go Back
               </button>
               <a
                 href={recipe.source_url}
                 target="_blank"
-                className="self-start bg-orange-500 py-2 px-5 mt-3 text-orange-100 rounded shadow-lg shadow-orange-200 hover:bg-cyan-500 hover:text-cyan-100 hover:shadow-cyan-200 duration-500"
+                className="bg-sky-400 text-sky-50 p-3 px-8 rounded-full uppercase shadow-lg shadow-sky-200 hover:bg-gray-600 hover:text-gray-50 hover:shadow-gray-300 duration-300"
               >
                 Get Directions
               </a>
+            </div>
+          </div>
+          <div className="bg-blue-500 overflow-hidden flex justify-center items-center h-96 rounded-xl">
+            <img
+              src={recipe.image_url}
+              alt={recipe.title}
+              className="w-full block rounded-xl hover:scale-105 duration-300"
+            />
+          </div>
+          <div className="col-span-full">
+            <h2 className="text-4xl flex items-center gap-3 font-medium mb-5">
+              <span className="text-rose-500">
+                <GiKnifeFork />
+              </span>{" "}
+              Ingredients:
+            </h2>
+            <hr className="border-rose-100" />
+            <div className="mt-5">
+              {recipe.ingredients &&
+                recipe.ingredients.map((ing) => (
+                  <div
+                    key={Math.floor(Math.random() * 100000000)}
+                    className="flex gap-2 items-baseline"
+                  >
+                    <TiTick />
+                    <p className="leading-loose">
+                      {" "}
+                      <span>
+                        {ing.quantity && ing.quantity}
+                        {ing.unit && ing.unit}{" "}
+                        {ing.description && ing.description}
+                      </span>{" "}
+                    </p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

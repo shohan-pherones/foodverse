@@ -9,9 +9,9 @@ Your one stop for recipes, Foodverse is the best app for any kind of cuisine and
 
 ### Features:
 
-1.  User can search different kinds of recipe
-2.  User can find the necessary ingredients for the specific recipe item
-3.  Also a recipe item can be saved into the local storage of the browser
+1.  Users can search different kinds of recipe and get the ingredients for these
+2.  Users can save specific recipes as the favorites
+3.  Favorite recipes also stored into the local storage of the client’s browser
 
 ### View the app (Hosted on Netlify):
 
